@@ -53,6 +53,26 @@ namespace Packing
         public static List<double>[] OrderedFirstFit(double[] weights, int c = 1)
         {
             var containers = Enumerable.Range(0, weights.Length).Select((x) => new List<double>()).ToArray();
+            Array.Sort<double>(weights, new Comparison<double>((i1, i2) => i2.CompareTo(i1)));
+            var i = 0;
+            var j = 0;
+            while(i < weights.Length)
+            {
+                while(j < containers.Length)
+                {
+                    if (containers[j].Sum(x => x) + weights[i] <= c)
+                    {
+                        containers[j].Add(weights[i]);
+                        i++;
+                        j--;
+                        if(i == weights.Length)
+                        {
+                            break;
+                        }
+                    }
+                    j++;
+                }
+            }
             return containers;
         }
 
