@@ -25,22 +25,20 @@ namespace Packing
 
         public static List<double>[] FirstFit(double[] weights, int c = 1)
         {
-            //List<double>[] containers = new List<double>[weights.Length];
-            List<List<double>> containers = new List<List<double>>();
-            containers.Add(new List<double>());
+            var containers = Enumerable.Range(0, weights.Length).Select((x) => new List<double>()).ToArray();
             var i = 0;
             var j = 0;
 
             while(i < weights.Length)
             {
-                while(j < weights.Length)
+                while(j < containers.Length)
                 {
                     if (containers[j].Sum(x => x) + weights[i] <= c)
                     {
                         containers[j].Add(weights[i]);
                         i++;
                         j--;
-                        if(i == weights.Length)
+                        if (i == weights.Length)
                         {
                             break;
                         }
@@ -54,13 +52,13 @@ namespace Packing
 
         public static List<double>[] OrderedFirstFit(double[] weights, int c = 1)
         {
-            List<double>[] containers = new List<double>[weights.Length];
+            var containers = Enumerable.Range(0, weights.Length).Select((x) => new List<double>()).ToArray();
             return containers;
         }
 
         public static List<double>[] BestFit(double[] weights, int c = 1)
         {
-            List<double>[] containers = new List<double>[weights.Length];
+            var containers = Enumerable.Range(0, weights.Length).Select((x) => new List<double>()).ToArray();
             var i = 0;
             var j = 0;
             while(i < weights.Length)
@@ -89,7 +87,7 @@ namespace Packing
                 }
                 i++;
             }
-            return containers;
+            return containers.ToArray();
         }
     }
 }
