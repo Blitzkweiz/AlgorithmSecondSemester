@@ -47,7 +47,7 @@ namespace Packing
                 }
             }
 
-            return containers.ToArray();
+            return containers.Where(x => x.Count > 0).ToArray();
         }
 
         public static List<double>[] OrderedFirstFit(double[] weights, int c = 1)
@@ -73,7 +73,7 @@ namespace Packing
                     j++;
                 }
             }
-            return containers;
+            return containers.Where(x => x.Count > 0).ToArray(); ;
         }
 
         public static List<double>[] BestFit(double[] weights, int c = 1)
@@ -99,15 +99,13 @@ namespace Packing
                     }
                     containers[freeSpaces.IndexOf(freeSpaces.Min())].Add(weights[i]);
                     i++;
-                    j--;
                     if(i == weights.Length)
                     {
                         break;
                     }
                 }
-                i++;
             }
-            return containers.ToArray();
+            return containers.Where(x => x.Count > 0).ToArray();
         }
     }
 }

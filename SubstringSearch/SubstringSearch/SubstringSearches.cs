@@ -81,7 +81,6 @@ namespace SubstringSearch
                 {
                     if(pattern[j] != text[i + j])
                     {
-                        var dbg = text[i + j];
                         skip = Math.Max(1, j - shiftArray[(int)text[i + j]]);
                         break;
                     }
@@ -104,9 +103,8 @@ namespace SubstringSearch
                 array[i] = -1;
             }
 
-            for (var i = 0; i < pattern.Length - 1; i++)
+            for (var i = 0; i < pattern.Length; i++)
             {
-                var dbg1 = pattern[i];
                 array[pattern[i]] = i;
             }
                 

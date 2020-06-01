@@ -16,11 +16,13 @@ namespace Packing.Tests
             Random random = new Random();
             weights = Enumerable.Repeat(0, n).Select(i => random.NextDouble()).ToArray();
         }
-
+        
         [TestMethod]
         public void NextFitTest()
         {
-            var actual = PackingTask.NextFit(weights);
+            var actual = PackingTask.NextFit(weights).Where(x => x.Count > 0).ToArray();
+
+            Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
                 Assert.IsTrue(actual[i].Sum(x => x) < 1);
@@ -31,7 +33,9 @@ namespace Packing.Tests
         [TestMethod]
         public void FirstFitTest()
         {
-            var actual = PackingTask.FirstFit(weights);
+            var actual = PackingTask.FirstFit(weights).Where(x => x.Count > 0).ToArray();
+
+            Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
                 Assert.IsTrue(actual[i].Sum(x => x) < 1);
@@ -42,7 +46,9 @@ namespace Packing.Tests
         [TestMethod]
         public void OrderedFirstFitTest()
         {
-            var actual = PackingTask.OrderedFirstFit(weights);
+            var actual = PackingTask.OrderedFirstFit(weights).Where(x => x.Count > 0).ToArray();
+
+            Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
                 Assert.IsTrue(actual[i].Sum(x => x) < 1);
@@ -53,7 +59,9 @@ namespace Packing.Tests
         [TestMethod]
         public void BestFitTest()
         {
-            var actual = PackingTask.BestFit(weights);
+            var actual = PackingTask.BestFit(weights).Where(x => x.Count > 0).ToArray();
+
+            Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
                 Assert.IsTrue(actual[i].Sum(x => x) < 1);

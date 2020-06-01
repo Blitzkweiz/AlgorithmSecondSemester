@@ -16,7 +16,7 @@ namespace SearchTest
         public static void Initialiation(TestContext testContext)
         {
             text = File.ReadAllText(@"C:\Users\Blitzkweiz_Ithore\AlgorithmSecondSemester\SubstringSearch\SearchTest\Source\war-peace.txt");
-            pattern = "death";
+            pattern = "smile";
         }
 
         [TestMethod]
