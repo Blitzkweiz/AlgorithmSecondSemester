@@ -20,8 +20,11 @@ namespace Packing.Tests
         [TestMethod]
         public void NextFitTest()
         {
+            DateTime start = DateTime.Now;
             var actual = PackingTask.NextFit(weights).Where(x => x.Count > 0).ToArray();
+            DateTime end = DateTime.Now;
 
+            Console.WriteLine("TIME: " + (end - start).TotalMilliseconds);
             Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
@@ -33,8 +36,11 @@ namespace Packing.Tests
         [TestMethod]
         public void FirstFitTest()
         {
+            DateTime start = DateTime.Now;
             var actual = PackingTask.FirstFit(weights).Where(x => x.Count > 0).ToArray();
+            DateTime end = DateTime.Now;
 
+            Console.WriteLine("TIME: " + (end - start).TotalMilliseconds);
             Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
             {
@@ -46,7 +52,11 @@ namespace Packing.Tests
         [TestMethod]
         public void OrderedFirstFitTest()
         {
+            DateTime start = DateTime.Now;
             var actual = PackingTask.OrderedFirstFit(weights).Where(x => x.Count > 0).ToArray();
+            DateTime end = DateTime.Now;
+
+            Console.WriteLine("TIME: " + (end - start).TotalMilliseconds);
 
             Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
@@ -59,7 +69,11 @@ namespace Packing.Tests
         [TestMethod]
         public void BestFitTest()
         {
+            DateTime start = DateTime.Now;
             var actual = PackingTask.BestFit(weights).Where(x => x.Count > 0).ToArray();
+            DateTime end = DateTime.Now;
+
+            Console.WriteLine("TIME: " + (end - start).TotalMilliseconds);
 
             Console.WriteLine("Containers number :" + actual.Length);
             for (int i = 0; i < actual.Length; i++)
